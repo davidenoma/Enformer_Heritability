@@ -1,8 +1,7 @@
 import pandas as pd
 import sys
-
 fpath = sys.argv[1]
-print(len(fpath))
+print(len(fpath),)
 if len(sys.argv) > 2:
     key = sys.argv[2]
     df = pd.read_hdf(fpath, key=key)
