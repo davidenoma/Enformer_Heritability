@@ -1,7 +1,8 @@
 import h5py
 import sys
+import numpy as np
 fpath = sys.argv[1]
-
+ds_arr = ""
 with h5py.File(fpath, "r") as f:
     # Print all root level object names (aka keys)
     # these can be group or dataset names
@@ -20,3 +21,5 @@ with h5py.File(fpath, "r") as f:
     # preferred methods to get dataset values:
     ds_obj = f[a_group_key]      # returns as a h5py dataset object
     ds_arr = f[a_group_key][()]  # returns as a numpy array
+
+np.savetxt(fpath+".csv", ds_arr, delimiter=",")
