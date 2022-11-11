@@ -13,6 +13,8 @@ with h5py.File(fpath, "r") as f:
     ds_arr = np.empty([f[group_keys[0]].shape[0], len(group_keys)])
     i = 0
     for key in group_keys:
+        print("Key for: ",group_keys[i])
+        print(f[key].shape)
         ds_arr[:, i] = f[key]
         i += 1
 f.close()
