@@ -17,11 +17,11 @@ with h5py.File(fpath, "r") as f:
     for key in group_keys:
         print("Key for: ",group_keys[i])
         if i < 2:
-            snp_activity_difference[:, i] = f[key]
+            snp_activity_difference[:, :] = f[key]
         if i >= 2 & i < 7:
-            snps[:,i] = f[key]
+            snps[:,] = f[key]
         if i > 7:
-            targets[:,i] = f[key]
+            targets[:,] = f[key]
         i+=1
 f.close()
 chr_number = fpath.split(".")[-2]
