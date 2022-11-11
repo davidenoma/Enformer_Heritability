@@ -10,7 +10,7 @@ with h5py.File(fpath, "r") as f:
     # these can be group or dataset names
     print("Keys: %s" % f.keys())
     group_keys = list(f.keys())
-    ds_arr = np.empty(f[group_keys[0]].shape[0], len(group_keys))
+    ds_arr = np.empty([f[group_keys[0]].shape[0], len(group_keys)])
     i = 0
     for key in group_keys():
         ds_arr[:, i] = f[key]
