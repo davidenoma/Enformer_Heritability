@@ -18,11 +18,12 @@ with h5py.File(fpath, "r") as f:
         print("Key for: ",group_keys[i])
         print(f[key].shape,key)
         if i < 2:
+            print(f[key][()].shape)
             snp_activity_difference = np.concatenate((snp_activity_difference,f[key][()]),axis=0)
-        if i >= 2 & i < 7:
-            snps = f[key][()]
-        if i > 7:
-            targets = f[key][()]
+        # if i >= 2 & i < 7:
+        #     snps = f[key][()]
+        # if i > 7:
+        #     targets = f[key][()]
         i+=1
 print(snp_activity_difference.shape)
 f.close()
