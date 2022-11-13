@@ -23,7 +23,7 @@ with h5py.File(fpath, "r") as f:
     #     if i > 7:
     #         targets = np.concatenate([targets,f[group_keys[i]][()]])
     #     i+=1
-print(snps.shape,targets.shape)
+# print(snps.shape,targets.shape)
 f.close()
 chr_number = fpath.split(".")[-2]
 # np.savetxt("SADs"+chr_number + ".csv", SADs, delimiter=",")
