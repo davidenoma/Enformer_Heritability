@@ -11,6 +11,7 @@ with h5py.File(fpath, "r") as f:
     #getting the shape for SAD scores.
     SADs = f['SAD'][()]
     SARs = f['SAR'][()]
+    print(SARs.shape,SADs.shape)
     snps = np.empty([f['alt'].shape[0],] )
     targets = np.empty([f['target_ids'].shape[0],])
     i = 2
@@ -21,7 +22,7 @@ with h5py.File(fpath, "r") as f:
         if i > 7:
             targets = np.concatenate(targets,f[group_keys[i]][()],axis =1)
         i+=1
-print(SARs.shape,SADs.shape,snps.shape,targets.shape)
+print(snps.shape,targets.shape)
 f.close()
 chr_number = fpath.split(".")[-2]
 np.savetxt("SADs"+chr_number + ".csv", SADs, delimiter=",")
