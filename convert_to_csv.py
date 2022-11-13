@@ -9,10 +9,10 @@ with h5py.File(fpath, "r") as f:
     group_keys = list(f.keys())
     #Keys: <KeysViewHDF5 ['SAD', 'SAR', 'alt', 'chr', 'pos', 'ref', 'snp', 'target_ids', 'target_labels']
     #getting the shape for SAD scores.
-    SADs = f['SAD'][()]
-    SARs = f['SAR'][()]
+    # SADs = f['SAD'][()]
+    # SARs = f['SAR'][()]
+    # print(SARs.shape, SADs.shape)
     snps = np.vstack([f['alt'][()],f['chr'][()],f['pos'][()],f['ref'][()],f['snp'][()]])
-    print(SARs.shape,SADs.shape)
     # snps = np.empty([f['alt'].shape[0],] )
     targets = np.vstack([f['target_ids'][()],f['target_labels'][()]])
     # i = 2
@@ -26,9 +26,9 @@ with h5py.File(fpath, "r") as f:
 print(snps.shape,targets.shape)
 f.close()
 chr_number = fpath.split(".")[-2]
-np.savetxt("SADs"+chr_number + ".csv", SADs, delimiter=",")
-print("Done writing..."+"SADs"+chr_number)
-np.savetxt("SARs"+chr_number + ".csv", SARs, delimiter=",")
+# np.savetxt("SADs"+chr_number + ".csv", SADs, delimiter=",")
+# print("Done writing..."+"SADs"+chr_number)
+# np.savetxt("SARs"+chr_number + ".csv", SARs, delimiter=",")
 print("Done writing..."+"SADs"+chr_number)
 np.savetxt("snps"+chr_number + ".csv", snps, delimiter=",")
 print("Done writing..."+"snps"+chr_number)
