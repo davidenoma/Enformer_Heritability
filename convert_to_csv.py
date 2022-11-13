@@ -1,7 +1,6 @@
 import h5py
 import sys
 import numpy as np
-
 fpath = sys.argv[1]
 with h5py.File(fpath, "r") as f:
     # Print all root level object names (aka keys)
@@ -10,24 +9,21 @@ with h5py.File(fpath, "r") as f:
     group_keys = list(f.keys())
     #Keys: <KeysViewHDF5 ['SAD', 'SAR', 'alt', 'chr', 'pos', 'ref', 'snp', 'target_ids', 'target_labels']
     #getting the shape for SAD scores.
-    snp_activity_difference = np.empty([f[group_keys[0]].shape[0], f[group_keys[0]].shape[1]])
-    snps = np.empty([f[group_keys[2]].shape[0],] )
-    targets = np.empty([f[group_keys[7]].shape[0],])
-    i = 0
+    SADs = f['SAD'][()]
+    SARs = f['SAR'][()]
+    snps = np.empty([f['alt'].shape[0],] )
+    targets = np.empty([f['target_ids'].shape[0],])
+    i = 2
     for key in group_keys:
-        print("Key for: ",group_keys[i])
-        print(f[key].shape,key)
-        if i < 2:
-            print(f[key][()].shape)
-            snp_activity_difference = np.concatenate((snp_activity_difference,f[key][()]),axis=0)
-        # if i >= 2 & i < 7:
-        #     snps = f[key][()]
-        # if i > 7:
-        #     targets = f[key][()]
+        if i >= 2 & i < 7:
+            snps = np.concatenate(snps,f[group_keys[i]][()],axis=1)
+        if i > 7:
+            targets = np.concatenate(targets,f[group_keys[i]][()],axis =1)
         i+=1
-print(snp_activity_difference.shape)
+print(SARs.shape,SADs.shape,snps.shape,targets.shape)
 f.close()
 chr_number = fpath.split(".")[-2]
-np.savetxt("SA_"+chr_number + ".csv", snp_activity_difference, delimiter=",")
+np.savetxt("SADs"+chr_number + ".csv", SADs, delimiter=",")
+np.savetxt("SARs"+chr_number + ".csv", SARs, delimiter=",")
 np.savetxt("snp"+chr_number + ".csv", snps, delimiter=",")
 np.savetxt("targets"+chr_number + ".csv", targets, delimiter=",")
