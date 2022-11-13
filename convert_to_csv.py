@@ -11,7 +11,7 @@ with h5py.File(fpath, "r") as f:
     #getting the shape for SAD scores.
     SADs = f['SAD'][()]
     SARs = f['SAR'][()]
-    snps = f[]
+
     print(SARs.shape,SADs.shape)
     snps = np.empty([f['alt'].shape[0],] )
     targets = np.empty([f['target_ids'].shape[0],])
