@@ -15,6 +15,7 @@ with h5py.File(fpath, "r") as f:
     targets = np.empty([f['target_ids'].shape[0],])
     i = 2
     for key in group_keys:
+        print(i)
         if i >= 2 & i < 7:
             snps = np.concatenate(snps,f[group_keys[i]][()],axis=1)
         if i > 7:
