@@ -12,9 +12,9 @@ with h5py.File(fpath, "r") as f:
     # SADs = f['SAD'][()]
     # SARs = f['SAR'][()]
     # print(SARs.shape, SADs.shape)
-    snps = np.vstack([f['alt'][()],f['chr'][()],f['pos'][()],f['ref'][()],f['snp'][()]])
+    snps = np.vstack((f['alt'][()],f['chr'][()],f['pos'][()],f['ref'][()],f['snp'][()]))
     # snps = np.empty([f['alt'].shape[0],] )
-    targets = np.vstack([f['target_ids'][()],f['target_labels'][()]])
+    targets = np.vstack((f['target_ids'][()],f['target_labels'][()]))
     # i = 2
     # for key in group_keys:
     #     print(i)
@@ -27,10 +27,10 @@ with h5py.File(fpath, "r") as f:
 f.close()
 chr_number = fpath.split(".")[-2]
 # np.savetxt("SADs"+chr_number + ".csv", SADs, delimiter=",")
-# print("Done writing..."+"SADs"+chr_number)
-# # np.savetxt("SARs"+chr_number + ".csv", SARs, delimiter=",")
-# print("Done writing..."+"SADs"+chr_number)
-# np.savetxt("snps"+chr_number + ".csv", snps, delimiter=",")
-# print("Done writing..."+"snps"+chr_number)
-# np.savetxt("targets"+chr_number + ".csv", targets, delimiter=",")
-# print("Done writing..."+"targets"+chr_number)
+print("Done writing..."+"SADs"+chr_number)
+# np.savetxt("SARs"+chr_number + ".csv", SARs, delimiter=",")
+print("Done writing..."+"SADs"+chr_number)
+np.savetxt("snps"+chr_number + ".csv", snps, delimiter=",")
+print("Done writing..."+"snps"+chr_number)
+np.savetxt("targets"+chr_number + ".csv", targets, delimiter=",")
+print("Done writing..."+"targets"+chr_number)
