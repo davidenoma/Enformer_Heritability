@@ -11,6 +11,7 @@ with h5py.File(fpath, "r") as f:
     #getting the shape for SAD scores.
     SADs = f['SAD'][()]
     SARs = f['SAR'][()]
+    snps = f[]
     print(SARs.shape,SADs.shape)
     snps = np.empty([f['alt'].shape[0],] )
     targets = np.empty([f['target_ids'].shape[0],])
@@ -18,9 +19,9 @@ with h5py.File(fpath, "r") as f:
     for key in group_keys:
         print(i)
         if i >= 2 & i < 7:
-            snps = np.concatenate([snps,f[group_keys[i]][()]],axis=1)
+            snps = np.concatenate([snps,f[group_keys[i]][()]])
         if i > 7:
-            targets = np.concatenate([targets,f[group_keys[i]][()]],axis =1)
+            targets = np.concatenate([targets,f[group_keys[i]][()]])
         i+=1
 print(snps.shape,targets.shape)
 f.close()
