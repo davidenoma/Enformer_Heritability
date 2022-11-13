@@ -14,7 +14,7 @@ with h5py.File(fpath, "r") as f:
     # print(SARs.shape, SADs.shape)
     snps = np.vstack([f['alt'][()],f['chr'][()],f['pos'][()],f['ref'][()],f['snp'][()]])
     # snps = np.empty([f['alt'].shape[0],] )
-    targets = np.vstack([f['target_ids'][()],f['target_labels'][()]])
+    # targets = np.vstack([f['target_ids'][()],f['target_labels'][()]])
     # i = 2
     # for key in group_keys:
     #     print(i)
