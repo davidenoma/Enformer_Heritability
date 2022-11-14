@@ -15,11 +15,9 @@ echo "Current working directory: `pwd`"
 echo "Starting run at: `date`"
 # ---------------------------------------------------------------------
 module load python
-for file in enformer_variant_scores;
+for file in enformer_variant_scores/;
 do echo $file;
 done
-
-
 echo "hi"
 
 python myscript.py
