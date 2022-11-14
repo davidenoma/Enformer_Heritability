@@ -2,7 +2,8 @@ import h5py
 import sys
 import numpy as np
 fpath = sys.argv[1]
-snps,targets = ""
+snps = ""
+targets = ""
 with h5py.File(fpath, "r") as f:
     # Print all root level object names (aka keys)
     # these can be group or dataset names
