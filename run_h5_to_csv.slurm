@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 # ---------------------------------------------------------------------
 # An example SLURM script for running a job on a Compute Canada cluster.
 # ---------------------------------------------------------------------
