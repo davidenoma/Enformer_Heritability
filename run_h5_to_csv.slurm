@@ -5,12 +5,12 @@
 # ---------------------------------------------------------------------
 #SBATCH --job-name=SLURM_example
 
-#SBATCH --nodes=1
+#SBATCH --nodes=4
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --time=0-01:00:00
+#SBATCH --time=0-05:00:00
 
-#SBATCH --mem=1gb
+#SBATCH --mem=64gb
 
 #SBATCH --partition=lattice
 
@@ -18,9 +18,9 @@
 echo "Current working directory: `pwd`"
 echo "Starting run at: `date`"
 # ---------------------------------------------------------------------
-module load python/3.10.4
+module load python
 
-./scientific_code input1.dat input2.dat input3.dat
+print('hi')
 
 # ---------------------------------------------------------------------
 echo "Job finished with exit code $? at: `date`"
