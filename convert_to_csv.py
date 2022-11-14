@@ -20,8 +20,6 @@ with h5py.File(fpath, "r") as f:
     alt = f['alt'][()]
     chr = f['chr'][()]
     pos = f['pos'][()]
-
-    print("snp",snp.type)
     target_ids = f['target_ids'][()]
     target_labels = f['target_labels'][()]
     print('target_ids',target_ids.shape)
