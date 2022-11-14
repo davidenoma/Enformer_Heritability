@@ -6,18 +6,18 @@
 
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1
+#SBATCH --cpus-per-task=8
 #SBATCH --time=0-05:00:00
 #SBATCH --mem=64gb
-#SBATCH --partition=lattice
-
+#SBATCH --partition=cpu2021
 # ---------------------------------------------------------------------
 echo "Current working directory: `pwd`"
 echo "Starting run at: `date`"
 # ---------------------------------------------------------------------
 module load python
 
-print('hi')
+echo "hi"
+python myscript.py
 
 # ---------------------------------------------------------------------
 echo "Job finished with exit code $? at: `date`"
