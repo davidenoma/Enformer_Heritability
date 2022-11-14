@@ -31,11 +31,13 @@ with h5py.File(fpath, "r") as f:
 print(snps.shape,targets.shape)
 f.close()
 chr_number = fpath.split(".")[-2]
-np.savetxt("SADs"+chr_number + ".csv", SADs, delimiter=",")
+
+
+np.savetxt("./enformer_variant_scores_csv/SADs"+chr_number + ".csv", SADs, delimiter=",")
 print("Done writing..."+"SADs"+chr_number)
-np.savetxt("SARs"+chr_number + ".csv", SARs, delimiter=",")
+np.savetxt("./enformer_variant_scores_csv/SARs"+chr_number + ".csv", SARs, delimiter=",")
 print("Done writing..."+"SADs"+chr_number)
-pd.DataFrame.to_csv(snps,"snps"+chr_number + ".csv" )
+pd.DataFrame.to_csv(snps,"./enformer_variant_scores_csv/snps"+chr_number + ".csv" )
 print("Done writing..."+"snps"+chr_number)
-pd.DataFrame.to_csv(targets,"targets"+chr_number + ".csv" )
+pd.DataFrame.to_csv(targets,"./enformer_variant_scores_csv/targets"+chr_number + ".csv" )
 print("Done writing..."+"targets"+chr_number)
