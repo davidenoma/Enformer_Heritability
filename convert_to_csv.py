@@ -12,36 +12,28 @@ with h5py.File(fpath, "r") as f:
     group_keys = list(f.keys())
     #Keys: <KeysViewHDF5 ['SAD', 'SAR', 'alt', 'chr', 'pos', 'ref', 'snp', 'target_ids', 'target_labels']
     #getting the shape for SAD scores.
-    # SADs = f['SAD'][()]
-    # SARs = f['SAR'][()]
+    SADs = f['SAD'][()]
+    SARs = f['SAR'][()]
     # print(SARs.shape, SADs.shape)
     snp = f['snp'][()]
     ref = f['ref'][()]
     alt = f['alt'][()]
     chr = f['chr'][()]
     pos = f['pos'][()]
+
     target_ids = f['target_ids'][()]
     target_labels = f['target_labels'][()]
     print('target_ids',target_ids.shape)
     snps = np.vstack((alt,chr,pos,ref,snp)).T
     snps  = pd.DataFrame(snps,dtype='string')
-    # snps = np.empty([f['alt'].shape[0],] )
     targets = np.vstack((target_ids,target_labels)).T
     targets = pd.DataFrame(targets,dtype='string')
-    # i = 2
-    # for key in group_keys:
-    #     print(i)
-    #     if i >= 2 & i < 7:
-    #         snps = np.concatenate([snps,f[group_keys[i]][()]])
-    #     if i > 7:
-    #         targets = np.concatenate([targets,f[group_keys[i]][()]])
-    #     i+=1
 print(snps.shape,targets.shape)
 f.close()
 chr_number = fpath.split(".")[-2]
-# np.savetxt("SADs"+chr_number + ".csv", SADs, delimiter=",")
+np.savetxt("SADs"+chr_number + ".csv", SADs, delimiter=",")
 print("Done writing..."+"SADs"+chr_number)
-# np.savetxt("SARs"+chr_number + ".csv", SARs, delimiter=",")
+np.savetxt("SARs"+chr_number + ".csv", SARs, delimiter=",")
 print("Done writing..."+"SADs"+chr_number)
 pd.DataFrame.to_csv(snps,"snps"+chr_number + ".csv" )
 print("Done writing..."+"snps"+chr_number)
