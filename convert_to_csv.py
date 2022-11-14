@@ -41,7 +41,9 @@ chr_number = fpath.split(".")[-2]
 print("Done writing..."+"SADs"+chr_number)
 # np.savetxt("SARs"+chr_number + ".csv", SARs, delimiter=",")
 print("Done writing..."+"SADs"+chr_number)
-np.savetxt("snps"+chr_number + ".csv", snps, delimiter=",")
+# np.savetxt("snps"+chr_number + ".csv", snps, delimiter=",")
 print("Done writing..."+"snps"+chr_number)
+
+
 np.savetxt("targets"+chr_number + ".csv", targets, delimiter=",")
 print("Done writing..."+"targets"+chr_number)
