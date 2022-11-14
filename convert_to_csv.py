@@ -32,14 +32,14 @@ with h5py.File(fpath, "r") as f:
     #     if i > 7:
     #         targets = np.concatenate([targets,f[group_keys[i]][()]])
     #     i+=1
-# print(snps.shape,targets.shape)
+print(snps.shape,targets.shape)
 f.close()
 chr_number = fpath.split(".")[-2]
 # np.savetxt("SADs"+chr_number + ".csv", SADs, delimiter=",")
 print("Done writing..."+"SADs"+chr_number)
 # np.savetxt("SARs"+chr_number + ".csv", SARs, delimiter=",")
 print("Done writing..."+"SADs"+chr_number)
-# np.savetxt("snps"+chr_number + ".csv", snps, delimiter=",")
+np.savetxt("snps"+chr_number + ".csv", snps, delimiter=",")
 print("Done writing..."+"snps"+chr_number)
-# np.savetxt("targets"+chr_number + ".csv", targets, delimiter=",")
+np.savetxt("targets"+chr_number + ".csv", targets, delimiter=",")
 print("Done writing..."+"targets"+chr_number)
