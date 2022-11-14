@@ -24,10 +24,10 @@ with h5py.File(fpath, "r") as f:
     target_labels = f['target_labels'][()]
     print('target_ids',target_ids.shape)
     snps = np.vstack((alt,chr,pos,ref,snp)).T
-    snps  = pd.DataFrame(snps)
+    snps  = pd.DataFrame(snps,dtype='string')
     # snps = np.empty([f['alt'].shape[0],] )
     targets = np.vstack((target_ids,target_labels)).T
-    targets = pd.DataFrame(targets)
+    targets = pd.DataFrame(targets,dtype='string')
     # i = 2
     # for key in group_keys:
     #     print(i)
