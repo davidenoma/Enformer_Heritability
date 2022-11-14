@@ -4,7 +4,7 @@
 # ---------------------------------------------------------------------
 #SBATCH --job-name=SLURM_example
 
-#SBATCH --nodes=4
+#SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=0-05:00:00
