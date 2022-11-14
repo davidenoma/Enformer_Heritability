@@ -12,9 +12,18 @@ with h5py.File(fpath, "r") as f:
     # SADs = f['SAD'][()]
     # SARs = f['SAR'][()]
     # print(SARs.shape, SADs.shape)
-    snps = np.vstack((f['alt'][()],f['chr'][()],f['pos'][()],f['ref'][()],f['snp'][()]))
+    snp = f['snp'][()]
+    ref = f['ref'][()]
+    alt = f['alt'][()]
+    chr = f['chr'][()]
+    pos = f['pos'][()]
+    print("snp",snp.shape)
+    target_ids = f['target_ids'][()]
+    target_labels = f['target_labels'][()]
+    print('target_ids',target_ids.shape)
+    snps = np.vstack((alt,chr,pos,ref,snp))
     # snps = np.empty([f['alt'].shape[0],] )
-    targets = np.vstack((f['target_ids'][()],f['target_labels'][()]))
+    targets = np.vstack((target_ids,target_labels))
     # i = 2
     # for key in group_keys:
     #     print(i)
@@ -23,7 +32,7 @@ with h5py.File(fpath, "r") as f:
     #     if i > 7:
     #         targets = np.concatenate([targets,f[group_keys[i]][()]])
     #     i+=1
-# print(snps.shape,targets.shape)
+print(snps.shape,targets.shape)
 f.close()
 chr_number = fpath.split(".")[-2]
 # np.savetxt("SADs"+chr_number + ".csv", SADs, delimiter=",")
