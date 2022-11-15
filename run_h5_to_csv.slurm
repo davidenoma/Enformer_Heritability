@@ -15,6 +15,7 @@ module load python/3.10.4
 h5files=`ls ./enformer_variant_scores/*.h5`
 for file in $h5files
 do echo $file
+python ./Enformer_Heritability/convert_to_csv.py $file
 done
 echo "hi"
 # ---------------------------------------------------------------------
